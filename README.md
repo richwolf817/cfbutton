@@ -39,15 +39,14 @@ curl -s https://raw.githubusercontent.com/aws-quickstart/taskcat/master/installe
 pip3 install taskcat
 ```
 ### Running TaskCat
-> A basic demonstartion 
+A basic demonstartion 
 ```
 taskcat -c cfn-miniproject/ci/demo.yml
 ```
+> This will create a taskcat_outputs file, open index.html in your browser for results
 
-This will create a taskcat_outputs file, open index.html in your browser for results
 
-> For the full show, you need to edit ci/ec2-test.json and ci/autoscale-test.json
-
+For the full show, you need to edit ci/ec2-test.json and ci/autoscale-test.json
 You will need KeyName, VpcId, Subnets, OperatorEMail for the test to run. Pretty enjoyable to watch.
 
 ```
