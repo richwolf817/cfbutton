@@ -8,21 +8,25 @@ To automate the process I'd use CodePipeline, but creating a CloudFormation temp
 
 [![Launch Stack](https://cdn.rawgit.com/buildkite/cloudformation-launch-stack-button-svg/master/launch-stack.svg)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=EC2WebServer&templateURL=https://s3-us-west-2.amazonaws.com/stelligent-wolf-richard/ec2webserver.template)
 
+CloudFormation will give you the URL on the Outputs tab
+
 ## Autoscale
 
 [![Launch Stack](https://cdn.rawgit.com/buildkite/cloudformation-launch-stack-button-svg/master/launch-stack.svg)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=S3Static&templateURL=https://s3-us-west-2.amazonaws.com/stelligent-wolf-richard/autoscale.template)
 
-CloudFormation will give you a URL from the Output
+CloudFormation will give you the URL on the Outputs tab
 
 ## S3 Static
 
 [![Launch Stack](https://cdn.rawgit.com/buildkite/cloudformation-launch-stack-button-svg/master/launch-stack.svg)](https://console.aws.amazon.com/cloudformation/home#/stacks/new?stackName=S3Static&templateURL=https://s3-us-west-2.amazonaws.com/stelligent-wolf-richard/s3static.template)
 
-CloudFormation will give you two outputs you need; S3Bucket and WebsiteURL. While cfn created the infastructure the index file still needs to be copied to the S3 bucket using the aws cli.
+CloudFormation will give you two Outputs; S3Bucket and WebsiteURL. While cfn created the infastructure the index file still needs to be copied to the S3 bucket using the aws cli.
 
 aws s3 cp cfn-miniproject/html/index.html s3://S3Bucket/ --recursive
 
 # Testing
+
+For testing I decided to use TaskCat because it's awesome. It requires Python 3.
 
 ## Installing TaskCat
 
@@ -43,7 +47,7 @@ A basic demonstartion
 ```
 taskcat -c cfn-miniproject/ci/demo.yml
 ```
-> This will create a taskcat_outputs file, open index.html in your browser for results
+> This will create a taskcat_outputs directory, open index.html in your browser for results
 
 
 For the full show, you need to edit ci/ec2-test.json and ci/autoscale-test.json
